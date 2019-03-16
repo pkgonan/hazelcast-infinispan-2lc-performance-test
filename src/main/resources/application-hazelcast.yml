@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/coupon
+    hikari:
+      username: coupon
+      password: coupon
+      maximum-pool-size: 200
+      minimum-idle: 200
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+      hibernate.cache.use_second_level_cache: true
+      hibernate.cache.use_query_cache: false
+      hibernate.cache.use_minimal_puts: true
+      hibernate.cache.use_reference_entries: true
+      hibernate.cache.hazelcast.instance_name: cache-test
+      hibernate.cache.default_cache_concurrency_strategy: nonstrict-read-write
+      hibernate.cache.region.factory_class: com.hazelcast.hibernate.HazelcastLocalCacheRegionFactory
+      javax.persistence.sharedCache.mode: ALL
+
+server:
+  port: 5000
+  tomcat:
+    max-threads: 512
+    accept-count: 10000
+
+#logging:
+#  level:
+#    com.pkgonan: TRACE
+#    org.hibernate:
+#      type: DEBUG
+#      SQL: DEBUG
